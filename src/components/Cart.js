@@ -2,7 +2,7 @@ import React from 'react'
 import products from './../products'
 import { ShopContext } from '../context/shop-context'
 import CartItem from './CartItem'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Cart = () => {
     const { cartItems, getTotalCartAmount, checkout } = React.useContext(ShopContext);
@@ -16,25 +16,27 @@ export const Cart = () => {
                         <h1>Cart Items</h1>
                         <div className='cartItemWrapper'>
 
-                        <div className='cartItems'>
-                            {products.map((product) => {
-                                if (cartItems[product.id] > 0) {
-                                    return <CartItem data={product} />
-                                }
-                            })}
-                        </div>
+                            <div className='cartItems'>
+                                {products.map((product) => {
+                                    if (cartItems[product.id] > 0) {
+                                        return <CartItem data={product} />
+                                    }
+                                })}
+                            </div>
                         </div>
 
-                            <h3>Subtotal: {subtotal}</h3>
+                        <h3>Subtotal: {subtotal}</h3>
                         <div className='checkout my-4'>
-                            <button  className='btn btn-lg btn-dark conti-shop-btn'>Continue Shopping</button>
-                            <button className='btn btn-lg btn-dark'>Checkout</button>
+                            <button className='btn btn-lg btn-dark conti-shop-btn' onClick={() => navigate('/')}>Continue Shopping</button>
+                            <Link to='/checkout'>
+                                <button className='btn btn-lg btn-dark'>Checkout</button>
+                            </Link>
                         </div>
                     </div>
 
                     :
 
-                    <><h1>Your Cart is Empty</h1><button  onClick={() => navigate('/')} className='btn btn-lg btn-dark'>Continue Shopping</button></>
+                    <><h1>Your Cart is Empty</h1><button onClick={() => navigate('/')} className='btn btn-lg btn-dark'>Continue Shopping</button></>
 
 
             }

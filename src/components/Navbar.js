@@ -20,8 +20,6 @@ return (
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <Link to="/" className="nav-link">Shop</Link>
-                            <a class="nav-link" href="#">Features</a>
-                            <a class="nav-link" href="#">Pricing</a>
                             <Link to="/cart" className="nav-link">Cart</Link>
                         </div>
                     </div>
